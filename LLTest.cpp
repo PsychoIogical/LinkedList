@@ -297,20 +297,39 @@ void LLTest::test4_replace() {
 
 /* @brief addFront() works correctly if list is empty. */
 void LLTest::test1_addFront() {
-
+  LinkedList<int> test;
+  test.addFront(1);
+  std::cout<<"TEST 1: addFront() works correctly if list is empty. --> ";
+  printPassFail((test.getLength() == 1) && (test.getEntry(1) == 1));
 }
 /* @brief addFront() works correctly if list is non-empty. */
 void LLTest::test2_addFront() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  test.addFront(5);
+  std::cout<<"TEST 2: addFront() works correctly if list is non-empty. --> ";
+  printPassFail((test.getLength() == 5) && (test.getEntry(1) == 5));
 }
 
 /* @brief removeFront() works correctly. */
 void LLTest::test1_removeFront() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  test.removeFront();
+  std::cout<<"TEST 1: removeFront() works correctly. --> ";
+  printPassFail(test.getLength() == 3);
 }
 /* @brief removeFront() throws an error correctly if list is empty. */
 void LLTest::test2_removeFront() {
-
+  LinkedList<int> test;
+  bool passed = false;
+  try {
+    test.removeFront();
+  } catch (const std::runtime_error& e) {
+    passed = true;
+  }
+  std::cout<<"TEST 2: removeFront() throws an error correctly if list is empty. --> ";
+  printPassFail(passed);
 }
 
 /* @brief addBack() works correctly if list is non-empty. */
