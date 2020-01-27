@@ -223,19 +223,38 @@ void LLTest::test1_clear() {
 
 /* @brief getEntry() returns right value at front of list. */
 void LLTest::test1_getEntry() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  std::cout<<"TEST 1: getEntry() returns right value at front of list. --> ";
+  printPassFail(test.getEntry(1) == 1);
 }
 /* @brief getEntry() returns right value at back of list. */
 void LLTest::test2_getEntry() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  std::cout<<"TEST 2: getEntry() returns right value at back of list. --> ";
+  printPassFail(test.getEntry(4) == 4);
 }
 /* @brief getEntry() returns right value in the middle of the list. */
 void LLTest::test3_getEntry() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  std::cout<<"TEST 3: getEntry() returns right value in the middle of the list. --> ";
+  printPassFail(test.getEntry(2) == 2);
 }
 /* @brief getEntry() throws an error correctly if position is invalid. */
 void LLTest::test4_getEntry() {
-
+  LinkedList<int> test;
+  bool passed = false;
+  int myTest = 0;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  try {
+    myTest = test.getEntry(6);
+  } catch (const std::runtime_error& e) {
+    passed = true;
+  }
+  std::cout<<"TEST 4: getEntry() throws an error correctly if position is invalid. --> ";
+  printPassFail(passed);
 }
 
 /* @brief replace() can replace the front. */
