@@ -89,33 +89,45 @@ void LLTest::runTests() {
  */
 /* @brief No items in list, isEmpty() returns true. */
 void LLTest::test1_isEmpty() {
-  LinkedList<int>* test = new LinkedList<int>();
+  LinkedList<int> test;
   std::cout<<"TEST 1: No items in list, isEmpty() returns true. --> ";
-  printPassFail(test->isEmpty());
+  printPassFail(test.isEmpty());
 }
 /* @brief Items in list, isEmpty() returns false. */
 void LLTest::test2_isEmpty() {
-  LinkedList<int>* test = new LinkedList<int>();
-  test->addFront(1);
+  LinkedList<int> test;
+  test.addFront(1);
   std::cout<<"TEST 2: Item(s) in list, isEmpty() returns false. --> ";
-  printPassFail(!(test->isEmpty()));
+  printPassFail(!(test.isEmpty()));
 }
 
 /* @brief getLength() returns 0 when list is empty. */
 void LLTest::test1_getLength() {
-
+  LinkedList<int> test;
+  std::cout<<"TEST 1: getLength() returns 0 when list is empty. --> ";
+  printPassFail(test.getLength() == 0);
 }
 /* @brief getLength() returns 1 after one addition to the list. */
 void LLTest::test2_getLength() {
-
+  LinkedList<int> test;
+  test.addFront(1);
+  std::cout<<"TEST 2: getLength() returns 1 after one addition. --> ";
+  printPassFail(test.getLength() == 1);
 }
 /* @brief getLength() returns correct value after multiple additions. */
 void LLTest::test3_getLength() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.addBack(i); } // 1->2->3->4
+  std::cout<<"TEST 3: getLength() returns correct value after multiple additions. --> ";
+  printPassFail(test.getLength() == 4);
 }
 /* @brief getLength() returns correct value after multiple additions and deletions. */
 void LLTest::test4_getLength() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 6 ; i++) { test.addBack(i); } //1->2->3->4->5->6
+  for(int i = 1 ; i <= 3 ; i++) { test.removeBack(); } //1->2->3
+  std::cout<<"TEST 4: getLength() returns correct value after multiple additions/deletions. --> ";
+  printPassFail(test.getLength() == 3);
 }
 
 /* @brief Can insert() into empty list. */
