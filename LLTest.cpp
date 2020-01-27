@@ -89,11 +89,16 @@ void LLTest::runTests() {
  */
 /* @brief No items in list, isEmpty() returns true. */
 void LLTest::test1_isEmpty() {
-
+  LinkedList<int>* test = new LinkedList<int>();
+  std::cout<<"TEST 1: No items in list, isEmpty() returns true. --> ";
+  printPassFail(test->isEmpty());
 }
 /* @brief Items in list, isEmpty() returns false. */
 void LLTest::test2_isEmpty() {
-
+  LinkedList<int>* test = new LinkedList<int>();
+  test->addFront(1);
+  std::cout<<"TEST 2: Item(s) in list, isEmpty() returns false. --> ";
+  printPassFail(!(test->isEmpty()));
 }
 
 /* @brief getLength() returns 0 when list is empty. */
@@ -223,5 +228,5 @@ void LLTest::test1_removeBack() {
 }
 /* @brief removeBack() throws an error correctly if list is empty. */
 void LLTest::test2_removeBack() {
-  
+
 }
