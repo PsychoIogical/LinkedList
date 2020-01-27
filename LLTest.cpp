@@ -214,7 +214,11 @@ void LLTest::test4_remove() {
 
 /* @brief clear() clears the list completely. */
 void LLTest::test1_clear() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  test.clear();
+  std::cout<<"TEST 1: clear() clears the list completely. --> ";
+  printPassFail(test.getLength() == 0);
 }
 
 /* @brief getEntry() returns right value at front of list. */
