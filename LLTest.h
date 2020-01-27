@@ -9,6 +9,7 @@
 #define LLTEST_
 
 #include "LinkedList.h"
+#include <stdexcept>
 
 class LLTest {
   private:

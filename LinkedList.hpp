@@ -108,7 +108,7 @@ void LinkedList<T>::remove(int position) throw (std::runtime_error) {
       Node<T>* temp1 = m_front;
       Node<T>* temp2;
       //temp1 will be the node we want gone, temp2 will store the previous node.
-      for (int i = 1 ; i <= position ; i++) {
+      for (int i = 1 ; i < position ; i++) {
         temp2 = temp1;
         temp1 = temp1->getNext();
       }

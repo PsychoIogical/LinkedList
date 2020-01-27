@@ -132,40 +132,84 @@ void LLTest::test4_getLength() {
 
 /* @brief Can insert() into empty list. */
 void LLTest::test1_insert() {
-
+  LinkedList<int> test;
+  test.insert(1,1);
+  std::cout<<"TEST 1: Can insert() into empty list. --> ";
+  printPassFail((test.getLength() == 1) && (test.getEntry(1) == 1));
 }
 /* @brief Can insert() into non-empty list at the beginning. */
 void LLTest::test2_insert() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  test.insert(1,5); //5->1->2->3->4
+  std::cout<<"TEST 2: Can insert() into non-empty list at the beginning. --> ";
+  printPassFail((test.getLength() == 5) && (test.getEntry(1) == 5));
 }
 /* @brief Can insert() into non-empty list at the end. */
 void LLTest::test3_insert() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  test.insert(5,5); //1->2->3->4->5
+  std::cout<<"TEST 3: Can insert() into non-empty list at the end. --> ";
+  printPassFail((test.getLength() == 5) && (test.getEntry(5) == 5));
 }
 /* @brief Can insert() into non-empty list in the middle. */
 void LLTest::test4_insert() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  test.insert(2,5); //1->5->2->3->4
+  std::cout<<"TEST 4: Can insert() into non-empty list in the middle. --> ";
+  printPassFail((test.getLength() == 5) && (test.getEntry(2) == 5));
 }
 /* @brief insert() throws an error correctly if position is invalid. */
 void LLTest::test5_insert() {
-
+  LinkedList<int> test;
+  bool passed = false;
+  try {
+    test.insert(3,1);
+  } catch (const std::runtime_error& e) {
+    passed = true;
+  }
+  std::cout<<"TEST 5: insert() throws an error correctly if position is invalid. --> ";
+  printPassFail(passed);
 }
 
-/* @brief Can remove() at front of  non-empty list. */
+/* @brief Can remove() at front of non-empty list. */
 void LLTest::test1_remove() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  test.remove(1); //2->3->4
+  std::cout<<"TEST 1: Can remove() at front of non-empty list. --> ";
+  printPassFail((test.getLength() == 3) && (test.getEntry(1) == 2));
 }
 /* @brief Can remove() at back of non-empty list. */
 void LLTest::test2_remove() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  test.remove(4); //1->2->3
+  std::cout<<"TEST 2: Can remove() at back of non-empty list. --> ";
+  printPassFail(test.getLength() == 3);
 }
 /* @brief Can remove() in the middle of the non-empty list. */
 void LLTest::test3_remove() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 7 ; i++) { test.insert(i, i); } //1->2->...->7
+  test.remove(3); //1->2->4->...->7
+  std::cout<<"TEST 3: Can remove() in the middle of the non-empty list. --> ";
+  printPassFail((test.getLength() == 6) && (test.getEntry(3) == 4));
 }
 /* @brief remove() throws an error correctly if position is invalid. */
 void LLTest::test4_remove() {
-
+  LinkedList<int> test;
+  bool passed = false;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  try {
+    test.remove(6);
+  } catch (const std::runtime_error& e) {
+    passed = true;
+  }
+  std::cout<<"TEST 4: remove() throws an error correctly if position is invalid. --> ";
+  printPassFail(passed);
 }
 
 /* @brief clear() clears the list completely. */
