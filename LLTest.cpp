@@ -259,19 +259,40 @@ void LLTest::test4_getEntry() {
 
 /* @brief replace() can replace the front. */
 void LLTest::test1_replace() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  test.replace(1,5); //5->2->3->4
+  std::cout<<"TEST 1: replace() can replace the front. --> ";
+  printPassFail((test.getLength() == 4) && (test.getEntry(1) == 5));
 }
 /* @brief replace() can replace the back. */
 void LLTest::test2_replace() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  test.replace(4,5); //1->2->3->5
+  std::cout<<"TEST 2: replace() can replace the back. --> ";
+  printPassFail((test.getLength() == 4) && (test.getEntry(4) == 5));
 }
 /* @brief replace() can replace a middle value. */
 void LLTest::test3_replace() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  test.replace(2,5); //1->5->3->4
+  std::cout<<"TEST 3: replace() can replace a middle value. --> ";
+  printPassFail((test.getLength() == 4) && (test.getEntry(2) == 5));
 }
 /* @brief replace() throws an error correctly if position is invalid. */
 void LLTest::test4_replace() {
-
+  LinkedList<int> test;
+  bool passed = false;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  try {
+    test.replace(6,5);
+  } catch (const std::runtime_error& e) {
+    passed = true;
+  }
+  std::cout<<"TEST 4: replace() throws an error correctly if position is invalid. --> ";
+  printPassFail(passed);
 }
 
 /* @brief addFront() works correctly if list is empty. */
