@@ -334,18 +334,37 @@ void LLTest::test2_removeFront() {
 
 /* @brief addBack() works correctly if list is non-empty. */
 void LLTest::test1_addBack() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  test.addBack(5);
+  std::cout<<"TEST 1: addBack() works correctly if list is non-empty. --> ";
+  printPassFail((test.getLength() == 5) && (test.getEntry(5) == 5));
 }
 /* @brief addBack() works correctly if list is empty. */
 void LLTest::test2_addBack() {
-
+  LinkedList<int> test;
+  test.addBack(5);
+  std::cout<<"TEST 2: addBack() works correctly if list is empty. --> ";
+  printPassFail((test.getLength() == 1) && (test.getEntry(1) == 5));
 }
 
 /* @brief removeBack() works correctly. */
 void LLTest::test1_removeBack() {
-
+  LinkedList<int> test;
+  for(int i = 1 ; i <= 4 ; i++) { test.insert(i, i); } //1->2->3->4
+  test.removeBack();
+  std::cout<<"TEST 1: removeBack() works correctly. --> ";
+  printPassFail(test.getLength() == 3);
 }
 /* @brief removeBack() throws an error correctly if list is empty. */
 void LLTest::test2_removeBack() {
-
+  LinkedList<int> test;
+  bool passed = false;
+  try {
+    test.removeBack();
+  } catch (const std::runtime_error& e) {
+    passed = true;
+  }
+  std::cout<<"TEST 2: removeBack() throws an error correctly if list is empty. --> ";
+  printPassFail(passed);
 }
