@@ -158,10 +158,12 @@ template <typename T>
 void LinkedList<T>::addFront(T entry) {
   if(m_length == 0) {
     m_front = new Node<T>(entry);
+    m_length++;
   } else {
     Node<T>* temp = new Node<T>(entry);
     temp -> setNext(m_front);
     m_front = temp;
+    m_length++;
   }
 }
 
