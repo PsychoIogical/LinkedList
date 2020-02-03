@@ -10,6 +10,6 @@
 int main() {
   LLTest* testSuite = new LLTest();
   testSuite->runTests();
-
+  delete testSuite;
   return 0;
 }
